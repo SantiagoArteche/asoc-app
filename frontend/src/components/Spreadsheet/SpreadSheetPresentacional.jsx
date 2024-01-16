@@ -11,6 +11,8 @@ export const SpreadSheetPresentacional = ({
   spreadsheet,
   DeleteForeverIcon,
   CloseIcon,
+  setErase,
+  erase,
 }) => {
   const [visibility, setVisibility] = useState("none");
   const [buttonVis, setButtonVis] = useState("block");
@@ -870,8 +872,9 @@ export const SpreadSheetPresentacional = ({
                     }
                   );
 
-                  if (deleteUser.status == 200) {
+                  if (deleteUser.status === 200) {
                     await deleteUser.json();
+                    setErase(erase === false ? true : false);
                   }
                 }}
               />

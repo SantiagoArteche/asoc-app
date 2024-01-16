@@ -10,6 +10,7 @@ export const Spreadsheet = () => {
   const [component, setComponent] = useState("");
   const [componentB, setComponentB] = useState("none");
   const [spreadsheet, setSpreadsheet] = useState([]);
+  const [erase, setErase] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:8080/api/clients")
@@ -27,7 +28,8 @@ export const Spreadsheet = () => {
         });
         setSpreadsheet(filter);
       });
-  }, [date]);
+    erase;
+  }, [date, erase]);
 
   return (
     <SpreadSheetPresentacional
@@ -42,6 +44,8 @@ export const Spreadsheet = () => {
       spreadsheet={spreadsheet}
       CloseIcon={CloseIcon}
       DeleteForeverIcon={DeleteForeverIcon}
+      setErase={setErase}
+      erase={erase}
     />
   );
 };

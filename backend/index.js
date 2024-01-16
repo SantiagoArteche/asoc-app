@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cors(corsOptions));
 mongoose
   .connect(
-    `mongodb+srv://santiarteche:${""}@associationdb.9123oxl.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://associationGithub:${process.env.MONGO_PASSWORD}@cluster0.90bg91h.mongodb.net/?retryWrites=true&w=majority`
   )
   .then(() => console.log(`BDD conectada`))
   .catch((error) => console.log(error));
