@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import "dotenv/config";
 
-const whiteList = ["http://localhost:5173"];
+const whiteList = ["https://asociacion.vercel.app/"];
 
 const corsOptions = {
   origin: function (origin, callback) {
