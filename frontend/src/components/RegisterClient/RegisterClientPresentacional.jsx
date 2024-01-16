@@ -9,18 +9,24 @@ export const RegisterClientPresentacional = ({
   Grid,
   Box,
   Link,
-  FormControl,
 }) => {
   return (
     <Box
       sx={{
         backgroundColor: "#08282b",
         color: "white",
-        padding: { xl: "30px 370px", lg: "30px 200px", md: "30px 80px" },
+        padding: {
+          xl: "30px 370px",
+          lg: "30px 200px",
+          md: "30px 80px",
+          sm: "20px 50px",
+          xs: "10px 30px",
+        },
         minHeight: "84vh",
       }}
     >
-      <form
+      <Box
+        component="form"
         style={{ backgroundColor: "#185457", padding: 18, borderRadius: 12 }}
         onSubmit={handleSubmit}
       >
@@ -51,6 +57,7 @@ export const RegisterClientPresentacional = ({
               name="dni"
               label="DNI"
               variant="filled"
+              component={"div"}
               color="grey"
               theme={theme}
               onChange={handleChange}
@@ -420,7 +427,7 @@ export const RegisterClientPresentacional = ({
             Enviar
           </Button>
         </Box>
-      </form>
+      </Box>
 
       <Box
         sx={{

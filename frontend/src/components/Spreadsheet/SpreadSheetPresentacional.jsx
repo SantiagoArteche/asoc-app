@@ -864,7 +864,7 @@ export const SpreadSheetPresentacional = ({
                 }}
                 onClick={async () => {
                   const deleteUser = await fetch(
-                    "http://localhost:8080/api/clients/deleteClient",
+                    "https://asociation-copy-api.vercel.app/api/clients/deleteClient",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },

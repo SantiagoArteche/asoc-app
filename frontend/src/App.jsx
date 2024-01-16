@@ -1,21 +1,19 @@
 import "./App.css";
-import { RegisterClient } from "./components/RegisterClient/RegisterClient";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/layout/Layout";
-import { Spreadsheet } from "./components/Spreadsheet/Spreadsheet";
+import { routes } from "./menuRoutes.js";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<RegisterClient />} />
-            <Route path="/spreadsheet" element={<Spreadsheet />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          {routes.map(({ id, path, Element }) => (
+            <Route key={id} path={path} element={<Element />} />
+          ))}
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

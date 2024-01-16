@@ -13,7 +13,7 @@ export const Spreadsheet = () => {
   const [erase, setErase] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/clients")
+    fetch("https://asociation-copy-api.vercel.app/api/clients")
       .then((res) => res.json())
       .then((data) => {
         let clients = data.message.map((el) => {
