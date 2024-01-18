@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import { SpreadSheetPresentacional } from "./SpreadSheetPresentacional";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import CloseIcon from "@mui/icons-material/Close";
-import "./spreadsheet.css";
 export const Spreadsheet = () => {
   const [date, setDate] = useState("1223");
   const [component, setComponent] = useState("");
   const [componentB, setComponentB] = useState("none");
   const [spreadsheet, setSpreadsheet] = useState([]);
   const [erase, setErase] = useState(false);
-
+  const [visibility, setVisibility] = useState("none");
+  const [buttonVis, setButtonVis] = useState("block");
+  const [dateB, setDateB] = useState("23");
   useEffect(() => {
     fetch("https://asociation-copy-api.vercel.app/api/clients")
       .then((res) => res.json())
@@ -31,21 +32,34 @@ export const Spreadsheet = () => {
     erase;
   }, [date, erase]);
 
+  const dateBChange = () => {
+    dateB === "23" ? setDateB("24") : setDateB("23");
+  };
+  const changeComponents = () => {
+    setComponent(component == "" ? "none" : "");
+    setComponentB(componentB == "none" ? "" : "none");
+  };
   return (
     <SpreadSheetPresentacional
       Link={Link}
       Box={Box}
       Button={Button}
       component={component}
-      setComponent={setComponent}
       componentB={componentB}
-      setComponentB={setComponentB}
+      changeComponents={changeComponents}
       setDate={setDate}
       spreadsheet={spreadsheet}
       CloseIcon={CloseIcon}
       DeleteForeverIcon={DeleteForeverIcon}
       setErase={setErase}
       erase={erase}
+      setVisibility={setVisibility}
+      visibility={visibility}
+      setButtonVis={setButtonVis}
+      buttonVis={buttonVis}
+      date={date}
+      dateBChange={dateBChange}
+      dateB={dateB}
     />
   );
 };

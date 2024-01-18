@@ -8,9 +8,8 @@ export const Footer = () => {
         padding: 3,
         textAlign: "center",
         fontWeight: "bold",
-        fontSize: 22,
+        fontSize: { xs: 18, md: 22 },
         color: "white",
-      
       }}
     >
       All Rights Reserved. 2023

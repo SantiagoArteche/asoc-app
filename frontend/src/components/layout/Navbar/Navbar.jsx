@@ -6,7 +6,7 @@ export const Navbar = () => {
       sx={{
         textAlign: "center",
         backgroundColor: "#185457",
-        fontSize: "40px",
+        fontSize: { xs: "36px", md: "40px" },
         color: "white",
         fontWeight: "bold",
         padding: 2,

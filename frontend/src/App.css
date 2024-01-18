@@ -3,3 +3,14 @@
   margin: 0;
   padding: 0;
 }
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+
+  background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #185457;
+  border-radius: 8px;
+}

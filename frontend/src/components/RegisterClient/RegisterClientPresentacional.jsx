@@ -6,7 +6,7 @@ export const RegisterClientPresentacional = ({
   Button,
   theme,
   errors,
-  Grid,
+
   Box,
   Link,
 }) => {
@@ -16,10 +16,10 @@ export const RegisterClientPresentacional = ({
         backgroundColor: "#08282b",
         color: "white",
         padding: {
-          xl: "30px 370px",
-          lg: "30px 200px",
-          md: "30px 80px",
-          sm: "20px 50px",
+          xl: "30px 340px",
+          lg: "30px 180px",
+          md: "30px 50px",
+          sm: "20px 160px",
           xs: "10px 30px",
         },
         minHeight: "84vh",
@@ -33,25 +33,22 @@ export const RegisterClientPresentacional = ({
         <Box
           sx={{
             display: "flex",
-            flexDirection: "row",
+            flexDirection: { xs: "column", md: "row" },
             flexWrap: true,
             marginTop: "32px",
             alignItems: "center",
             justifyContent: "center",
             paddingY: "10px",
-            gap: 10,
+            gap: { xs: 4, md: 10 },
           }}
         >
-          <Grid
-            item
+          <Box
             sx={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               gap: 2,
-              gridColumn: 4,
             }}
-            lg={4}
           >
             <TextField
               name="dni"
@@ -210,25 +207,22 @@ export const RegisterClientPresentacional = ({
                 },
               }}
             />
-          </Grid>
+          </Box>
 
-          <Grid
-            item
+          <Box
             sx={{
               display: "flex",
               flexDirection: "column",
-              gap: 2,
+              gap: 2.3,
               alignItems: "center",
-              gridColumn: 4,
             }}
-            lg={4}
           >
             <Box
               variant="h1"
               sx={{
                 textAlign: "center",
                 fontWeight: "bold",
-                fontSize: 38,
+                fontSize: { xs: 32, md: 38 },
               }}
             >
               Retira
@@ -354,12 +348,12 @@ export const RegisterClientPresentacional = ({
                 },
               }}
             />
-          </Grid>
-          <Grid item lg={4}>
+          </Box>
+          <Box>
             <Box
               sx={{
                 textAlign: "center",
-                fontSize: 32,
+                fontSize: { xs: 24, md: 32 },
                 fontWeight: "bold",
                 marginBottom: 2,
               }}
@@ -374,13 +368,12 @@ export const RegisterClientPresentacional = ({
               theme={theme}
               name="otros"
               sx={{
-                height: "100%",
-                minWidth: "250px",
-                minHeight: "70px",
-                width: "100%",
+                minWidth: { xs: "15rem", md: "200px", lg: "250px" },
+                minHeight: "80px",
                 backgroundColor: "lighter",
                 paddingInline: 2,
                 paddingTop: 0,
+                fontSize: 17,
                 borderRadius: 1.9,
                 color: "white",
                 "& .MuiInputLabel-root": {
@@ -388,7 +381,7 @@ export const RegisterClientPresentacional = ({
                 },
               }}
             />
-          </Grid>
+          </Box>
         </Box>
         <Box
           sx={{
@@ -408,7 +401,7 @@ export const RegisterClientPresentacional = ({
             theme={theme}
             sx={{
               backgroundColor: "dark",
-              fontSize: 16,
+              fontSize: { xs: 14, xl: 16 },
               ":hover": { backgroundColor: "#a2ede6" },
             }}
           >
@@ -420,7 +413,7 @@ export const RegisterClientPresentacional = ({
             theme={theme}
             sx={{
               backgroundColor: "dark",
-              fontSize: 16,
+              fontSize: { xs: 14, xl: 16 },
               ":hover": { backgroundColor: "#a2ede6" },
             }}
           >
@@ -440,10 +433,11 @@ export const RegisterClientPresentacional = ({
             variant="contained"
             theme={theme}
             sx={{
-              fontSize: 22,
+              fontSize: { xs: 18, md: 22 },
               backgroundColor: "lighter",
               textTransform: "capitalize",
               ":hover": { backgroundColor: "#185457" },
+              marginBottom: { sm: 2, md: 0 },
             }}
           >
             Ver Planillas

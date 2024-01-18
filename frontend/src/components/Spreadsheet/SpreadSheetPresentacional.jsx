@@ -1,23 +1,25 @@
-import { useState } from "react";
 export const SpreadSheetPresentacional = ({
   Box,
   Button,
   Link,
   component,
   componentB,
-  setComponent,
-  setComponentB,
   setDate,
   spreadsheet,
   DeleteForeverIcon,
   CloseIcon,
   setErase,
   erase,
+  setButtonVis,
+  buttonVis,
+  visibility,
+  setVisibility,
+  changeComponents,
+  dateBChange,
+  dateB,
 }) => {
-  const [visibility, setVisibility] = useState("none");
-  const [buttonVis, setButtonVis] = useState("block");
   return (
-    <Box sx={{ minHeight: "84vh", bgcolor: "#08282b" }}>
+    <Box sx={{ minHeight: "85vh", bgcolor: "#08282b" }}>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <Link
           to="/"
@@ -35,13 +37,13 @@ export const SpreadSheetPresentacional = ({
         </Link>
         <Button
           onClick={() => {
-            setComponent(component == "" ? "none" : "");
-            setComponentB(componentB == "none" ? "" : "none");
+            changeComponents();
+            dateBChange();
           }}
           sx={{
             alignSelf: "center",
             marginBottom: 3,
-            fontSize: { lg: 12, xl: 14, xs: 11 },
+            fontSize: { lg: 12, xl: 15, xs: 11 },
             backgroundColor: "#185457",
             ":hover": { background: "#a2ede6", color: "black" },
           }}
@@ -58,6 +60,7 @@ export const SpreadSheetPresentacional = ({
             flexDirection: "column",
             alignItems: "center",
             marginBottom: 5,
+            marginInline: 0.8,
           }}
         >
           <Box style={{ display: component }}>
@@ -76,7 +79,7 @@ export const SpreadSheetPresentacional = ({
                 variant="contained"
                 onClick={() => setDate(1223)}
                 sx={{
-                  fontSize: { lg: 10, xl: 12, xs: 9 },
+                  fontSize: { xs: 10, md: 12, lg: 13 },
                   backgroundColor: "#185457",
                   ":hover": { background: "#a2ede6", color: "black" },
                 }}
@@ -111,7 +114,7 @@ export const SpreadSheetPresentacional = ({
                 variant="contained"
                 onClick={() => setDate("0124")}
                 sx={{
-                  fontSize: { lg: 10, xl: 12, xs: 9 },
+                  fontSize: { xs: 10, md: 12, lg: 13 },
                   backgroundColor: "#185457",
                   ":hover": { background: "#a2ede6", color: "black" },
                 }}
@@ -122,7 +125,7 @@ export const SpreadSheetPresentacional = ({
                 variant="contained"
                 onClick={() => setDate("0224")}
                 sx={{
-                  fontSize: { lg: 10, xl: 12, xs: 9 },
+                  fontSize: { xs: 10, md: 12, lg: 13 },
                   backgroundColor: "#185457",
                   ":hover": { background: "#a2ede6", color: "black" },
                 }}
@@ -133,7 +136,7 @@ export const SpreadSheetPresentacional = ({
                 variant="contained"
                 onClick={() => setDate("0324")}
                 sx={{
-                  fontSize: { lg: 10, xl: 12, xs: 9 },
+                  fontSize: { xs: 10, md: 12, lg: 13 },
                   backgroundColor: "#185457",
                   ":hover": { background: "#a2ede6", color: "black" },
                 }}
@@ -144,7 +147,7 @@ export const SpreadSheetPresentacional = ({
                 variant="contained"
                 onClick={() => setDate("0424")}
                 sx={{
-                  fontSize: { lg: 10, xl: 12, xs: 9 },
+                  fontSize: { xs: 10, md: 12, lg: 13 },
                   backgroundColor: "#185457",
                   ":hover": { background: "#a2ede6", color: "black" },
                 }}
@@ -155,7 +158,7 @@ export const SpreadSheetPresentacional = ({
                 variant="contained"
                 onClick={() => setDate("0524")}
                 sx={{
-                  fontSize: { lg: 10, xl: 12, xs: 9 },
+                  fontSize: { xs: 10, md: 12, lg: 13 },
                   backgroundColor: "#185457",
                   ":hover": { background: "#a2ede6", color: "black" },
                 }}
@@ -166,7 +169,7 @@ export const SpreadSheetPresentacional = ({
                 variant="contained"
                 onClick={() => setDate("0624")}
                 sx={{
-                  fontSize: { lg: 10, xl: 12, xs: 9 },
+                  fontSize: { xs: 10, md: 12, lg: 13 },
                   backgroundColor: "#185457",
                   ":hover": { background: "#a2ede6", color: "black" },
                 }}
@@ -177,7 +180,7 @@ export const SpreadSheetPresentacional = ({
                 variant="contained"
                 onClick={() => setDate("0724")}
                 sx={{
-                  fontSize: { lg: 10, xl: 12, xs: 9 },
+                  fontSize: { xs: 10, md: 12, lg: 13 },
                   backgroundColor: "#185457",
                   ":hover": { background: "#a2ede6", color: "black" },
                 }}
@@ -188,7 +191,7 @@ export const SpreadSheetPresentacional = ({
                 variant="contained"
                 onClick={() => setDate("0824")}
                 sx={{
-                  fontSize: { lg: 10, xl: 12, xs: 9 },
+                  fontSize: { xs: 10, md: 12, lg: 13 },
                   backgroundColor: "#185457",
                   ":hover": { background: "#a2ede6", color: "black" },
                 }}
@@ -199,7 +202,7 @@ export const SpreadSheetPresentacional = ({
                 variant="contained"
                 onClick={() => setDate("0924")}
                 sx={{
-                  fontSize: { lg: 10, xl: 12, xs: 9 },
+                  fontSize: { xs: 10, md: 12, lg: 13 },
                   backgroundColor: "#185457",
                   ":hover": { background: "#a2ede6", color: "black" },
                 }}
@@ -210,7 +213,7 @@ export const SpreadSheetPresentacional = ({
                 variant="contained"
                 onClick={() => setDate(1024)}
                 sx={{
-                  fontSize: { lg: 10, xl: 12, xs: 9 },
+                  fontSize: { xs: 10, md: 12, lg: 13 },
                   backgroundColor: "#185457",
                   ":hover": { background: "#a2ede6", color: "black" },
                 }}
@@ -221,7 +224,7 @@ export const SpreadSheetPresentacional = ({
                 variant="contained"
                 onClick={() => setDate(1124)}
                 sx={{
-                  fontSize: { lg: 10, xl: 12, xs: 9 },
+                  fontSize: { xs: 10, md: 12, lg: 13 },
                   backgroundColor: "#185457",
                   ":hover": { background: "#a2ede6", color: "black" },
                 }}
@@ -232,7 +235,7 @@ export const SpreadSheetPresentacional = ({
                 variant="contained"
                 onClick={() => setDate(1224)}
                 sx={{
-                  fontSize: { lg: 10, xl: 12, xs: 9 },
+                  fontSize: { xs: 10, md: 12, lg: 13 },
                   backgroundColor: "#185457",
                   ":hover": { background: "#a2ede6", color: "black" },
                 }}
@@ -243,518 +246,99 @@ export const SpreadSheetPresentacional = ({
           </Box>
         </Box>
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: 30,
-          marginTop: 10,
-
-          marginInline: 1,
-          marginBottom: 8,
-          color: "white",
-        }}
-      >
-        <Box sx={{ textAlign: "center" }}>
-          <Box
-            sx={{
-              fontSize: 18.5,
-              fontWeight: "bold",
-              border: "2px solid black",
-              borderBottom: "2px solid black",
-              padding: 1,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            DNI
-          </Box>
-          <Box sx={{ fontSize: 16 }}>
-            {spreadsheet.map((client) => {
-              return (
-                <Box
-                  sx={{
-                    borderInline: "2px solid black",
-                    borderTop: "1px solid black",
-                    borderBottom: "3px solid black",
-                    paddingX: 1,
-                    height: 144,
-
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  key={client._id}
-                >
-                  {client.dni}
-                </Box>
-              );
-            })}
-          </Box>
-        </Box>
+      {spreadsheet.length === 0 && (
         <Box
           sx={{
             textAlign: "center",
+            marginTop: dateB.includes("23") ? { xs: 20 } : { xs: 15, sm: 20 },
+            paddingBottom: dateB.includes("23")
+              ? { xs: 20 }
+              : { xs: 15, sm: 0 },
+            marginInline: 8,
+            fontSize: { xs: 23, sm: 28, md: 35 },
+            color: "white",
           }}
         >
-          <Box
-            sx={{
-              fontSize: 18.5,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontWeight: "bold",
-              border: "2px solid black",
-              borderBottom: "2px solid black",
-              padding: 1,
-            }}
-          >
-            Nombre
-          </Box>
-          <Box sx={{ fontSize: 16 }}>
-            {spreadsheet.map((client) => {
-              return (
-                <Box
-                  sx={{
-                    borderInline: "2px solid black",
-                    borderTop: "1px solid black",
-                    borderBottom: "3px solid black",
-                    padding: 2,
-                    height: 144,
-
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  key={client._id}
-                >
-                  {client.nombre}
-                </Box>
-              );
-            })}
-          </Box>
+          {`Selecciona uno de los botones de arriba para traer la plantilla con su
+        respectivo año y mes (Recuerda que los clientes se registran con la fecha del día actual)`}
         </Box>
-        <Box sx={{ textAlign: "center" }}>
-          <Box
-            sx={{
-              fontSize: 18.5,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontWeight: "bold",
-              border: "2px solid black",
-              borderBottom: "2px solid black",
-              padding: 1,
-            }}
-          >
-            Apellido
-          </Box>
-          <Box sx={{ fontSize: 16 }}>
-            {spreadsheet.map((client) => {
-              return (
-                <Box
-                  sx={{
-                    borderInline: "2px solid black",
-                    borderTop: "1px solid black",
-                    borderBottom: "3px solid black",
-                    padding: 2,
-                    height: 144,
+      )}
 
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  key={client._id}
-                >
-                  {client.apellido}
-                </Box>
-              );
-            })}
-          </Box>
-        </Box>
+      {spreadsheet?.length !== 0 && (
         <Box
           sx={{
-            textAlign: "center",
+            display: "flex",
+            justifyContent: innerWidth < 1300 ? "start" : "center",
+            marginTop: 10,
+            overflowX: "auto",
+            marginBottom: 8,
+            marginInline: 1,
+            color: "white",
           }}
         >
-          <Box
-            sx={{
-              fontSize: 18.5,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontWeight: "bold",
-              border: "2px solid black",
-              borderBottom: "2px solid black",
-              padding: 1,
-            }}
-          >
-            Grupo Familiar
-          </Box>
-          <Box sx={{ fontSize: 16 }}>
-            {spreadsheet.map((client) => {
-              return (
-                <Box
-                  sx={{
-                    borderInline: "2px solid black",
-                    borderTop: "1px solid black",
-                    borderBottom: "3px solid black",
-                    padding: 2,
-                    height: 144,
+          <Box sx={{ textAlign: "center" }}>
+            <Box
+              sx={{
+                fontSize: { md: 14, lg: 16 },
+                fontWeight: "bold",
+                border: "2px solid black",
+                borderBottom: "2px solid black",
+                padding: 1,
+                height: 60,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              DNI
+            </Box>
 
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  key={client._id}
-                >
-                  {client.grupoFamiliar}
-                </Box>
-              );
-            })}
+            <Box sx={{ fontSize: { lg: 12, xl: 14 } }}>
+              {spreadsheet.map((client) => {
+                return (
+                  <Box
+                    sx={{
+                      borderInline: "2px solid black",
+                      borderTop: "1px solid black",
+                      borderBottom: "3px solid black",
+                      paddingX: 1,
+                      height: 144,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    key={client._id}
+                  >
+                    {client.dni}
+                  </Box>
+                );
+              })}
+            </Box>
           </Box>
-        </Box>
-        <Box sx={{ textAlign: "center" }}>
           <Box
             sx={{
-              fontSize: 18.5,
-              fontWeight: "bold",
-              border: "2px solid black",
-              borderBottom: "2px solid black",
-              padding: 1,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              textAlign: "center",
             }}
           >
-            Dirección
-          </Box>
-          <Box sx={{ fontSize: 16 }}>
-            {spreadsheet.map((client) => {
-              return (
-                <Box
-                  sx={{
-                    borderInline: "2px solid black",
-                    borderTop: "1px solid black",
-                    borderBottom: "3px solid black",
-                    padding: 2,
-                    height: 144,
+            <Box
+              sx={{
+                fontSize: { md: 14, lg: 16 },
+                height: 60,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: "bold",
+                border: "2px solid black",
+                borderBottom: "2px solid black",
+                padding: 1,
+              }}
+            >
+              Nombre
+            </Box>
 
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  key={client._id}
-                >
-                  {client.direccion != "" ? client.direccion : "-"}
-                </Box>
-              );
-            })}
-          </Box>
-        </Box>
-        <Box sx={{ textAlign: "center" }}>
-          <Box
-            sx={{
-              fontSize: 18.5,
-              fontWeight: "bold",
-              border: "2px solid black",
-              borderBottom: "2px solid black",
-              padding: 1,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            Teléfono
-          </Box>
-          <Box sx={{ fontSize: 16 }}>
-            {spreadsheet.map((client) => {
-              return (
-                <Box
-                  sx={{
-                    borderInline: "2px solid black",
-                    borderTop: "1px solid black",
-                    borderBottom: "3px solid black",
-                    padding: 2,
-                    height: 144,
-
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  key={client._id}
-                >
-                  {client.telefono != "" ? client.telefono : "-"}
-                </Box>
-              );
-            })}
-          </Box>
-        </Box>
-        <Box sx={{ textAlign: "center" }}>
-          <Box
-            sx={{
-              fontSize: 18.5,
-              fontWeight: "bold",
-              border: "2px solid black",
-              borderBottom: "2px solid black",
-              padding: 1,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            Mercaderias
-          </Box>
-          <Box sx={{ fontSize: 16 }}>
-            {spreadsheet.map((client) => {
-              return (
-                <Box
-                  sx={{
-                    borderInline: "2px solid black",
-                    borderTop: "1px solid black",
-                    borderBottom: "3px solid black",
-                    padding: 2,
-                    height: 144,
-
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  key={client._id}
-                >
-                  {client.mercaderias != "" ? client.mercaderias : "-"}
-                </Box>
-              );
-            })}
-          </Box>
-        </Box>
-        <Box sx={{ textAlign: "center", height: "100%" }}>
-          <Box
-            sx={{
-              fontSize: 18.5,
-              fontWeight: "bold",
-              border: "2px solid black",
-              borderBottom: "2px solid black",
-              padding: 1,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            Prendas
-          </Box>
-          <Box
-            sx={{
-              fontSize: 16,
-            }}
-          >
-            {spreadsheet.map((client) => {
-              return (
-                <Box
-                  sx={{
-                    borderInline: "2px solid black",
-                    borderTop: "1px solid black",
-                    borderBottom: "3px solid black",
-                    height: 144,
-
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    padding: 2,
-                  }}
-                  key={client._id}
-                >
-                  {client.prendas != "" ? client.prendas : "-"}
-                </Box>
-              );
-            })}
-          </Box>
-        </Box>
-        <Box sx={{ textAlign: "center" }}>
-          <Box
-            sx={{
-              fontSize: 18.5,
-              fontWeight: "bold",
-              border: "2px solid black",
-              borderBottom: "2px solid black",
-              padding: 1,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            Zapatillas
-          </Box>
-          <Box sx={{ fontSize: 16 }}>
-            {spreadsheet.map((client) => {
-              return (
-                <Box
-                  sx={{
-                    borderInline: "2px solid black",
-                    borderTop: "1px solid black",
-                    borderBottom: "3px solid black",
-                    padding: 2,
-                    height: 144,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  key={client._id}
-                >
-                  {client.zapatillas != "" ? client.zapatillas : "-"}
-                </Box>
-              );
-            })}
-          </Box>
-        </Box>
-        <Box sx={{ textAlign: "center" }}>
-          <Box
-            sx={{
-              fontSize: 18.5,
-              fontWeight: "bold",
-              border: "2px solid black",
-              borderBottom: "2px solid black",
-              padding: 1,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            Microcrédito
-          </Box>
-          <Box sx={{ fontSize: 16 }}>
-            {spreadsheet.map((client) => {
-              return (
-                <Box
-                  sx={{
-                    borderInline: "2px solid black",
-                    borderTop: "1px solid black",
-                    borderBottom: "3px solid black",
-                    padding: 2,
-                    height: 144,
-
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  key={client._id}
-                >
-                  {client.microCredito != "" ? client.microCredito : "-"}
-                </Box>
-              );
-            })}
-          </Box>
-        </Box>
-        <Box sx={{ textAlign: "center" }}>
-          <Box
-            sx={{
-              fontSize: 18.5,
-              fontWeight: "bold",
-              border: "2px solid black",
-              borderBottom: "2px solid black",
-              padding: 1,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            N° Cuota
-          </Box>
-          <Box sx={{ fontSize: 16 }}>
-            {spreadsheet.map((client) => {
-              return (
-                <Box
-                  sx={{
-                    borderInline: "2px solid black",
-                    borderTop: "1px solid black",
-                    borderBottom: "3px solid black",
-                    padding: 2,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    height: 144,
-                  }}
-                  key={client._id}
-                >
-                  {client.numeroCuota != "" ? client.numeroCuota : "-"}
-                </Box>
-              );
-            })}
-          </Box>
-        </Box>
-        <Box sx={{ textAlign: "center" }}>
-          <Box
-            sx={{
-              fontSize: 18.5,
-              fontWeight: "bold",
-              border: "2px solid black",
-              borderBottom: "2px solid black",
-              padding: 1,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            Comentarios
-          </Box>
-          <Box sx={{ fontSize: 16 }}>
-            {spreadsheet.map((client) => {
-              return (
-                <Box
-                  sx={{
-                    borderInline: "2px solid black",
-                    borderTop: "1px solid black",
-                    borderBottom: "3px solid black",
-                    padding: 2,
-                    height: 144,
-
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  key={client._id}
-                >
-                  {client.otros != "" ? client.otros : "-"}
-                </Box>
-              );
-            })}
-          </Box>
-        </Box>
-        <Box sx={{ textAlign: "center" }}>
-          <Box
-            sx={{
-              fontSize: 18.5,
-              fontWeight: "bold",
-              border: "2px solid black",
-              borderBottom: "2px solid black",
-              padding: 1,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            Fecha
-          </Box>
-          <Box sx={{ fontSize: 16 }}>
-            {spreadsheet.map((client) => {
-              return (
-                <Box key={client._id}>
+            <Box sx={{ fontSize: { lg: 12, xl: 14 } }}>
+              {spreadsheet.map((client) => {
+                return (
                   <Box
                     sx={{
                       borderInline: "2px solid black",
@@ -762,126 +346,582 @@ export const SpreadSheetPresentacional = ({
                       borderBottom: "3px solid black",
                       padding: 2,
                       height: 144,
-                      width: 73.5,
+
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                     }}
+                    key={client._id}
                   >
-                    {client.fecha.slice(5, 10)}
+                    {client.nombre}
                   </Box>
+                );
+              })}
+            </Box>
+          </Box>
+          <Box sx={{ textAlign: "center" }}>
+            <Box
+              sx={{
+                fontSize: { md: 14, lg: 16 },
+                height: 60,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: "bold",
+                border: "2px solid black",
+                borderBottom: "2px solid black",
+                padding: 1,
+              }}
+            >
+              Apellido
+            </Box>
+
+            <Box sx={{ fontSize: { lg: 12, xl: 14 } }}>
+              {spreadsheet.map((client) => {
+                return (
+                  <Box
+                    sx={{
+                      borderInline: "2px solid black",
+                      borderTop: "1px solid black",
+                      borderBottom: "3px solid black",
+                      padding: 2,
+                      height: 144,
+
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    key={client._id}
+                  >
+                    {client.apellido}
+                  </Box>
+                );
+              })}
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              textAlign: "center",
+            }}
+          >
+            <Box
+              sx={{
+                fontSize: { md: 14, lg: 16 },
+                height: 60,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: "bold",
+                border: "2px solid black",
+                borderBottom: "2px solid black",
+                padding: 1,
+              }}
+            >
+              Grupo Familiar
+            </Box>
+
+            <Box sx={{ fontSize: { lg: 12, xl: 14 } }}>
+              {spreadsheet.map((client) => {
+                return (
+                  <Box
+                    sx={{
+                      borderInline: "2px solid black",
+                      borderTop: "1px solid black",
+                      borderBottom: "3px solid black",
+                      padding: 2,
+                      height: 144,
+
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    key={client._id}
+                  >
+                    {client.grupoFamiliar}
+                  </Box>
+                );
+              })}
+            </Box>
+          </Box>
+          <Box sx={{ textAlign: "center" }}>
+            <Box
+              sx={{
+                fontSize: { md: 14, lg: 16 },
+                height: 60,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: "bold",
+                border: "2px solid black",
+                borderBottom: "2px solid black",
+                padding: 1,
+              }}
+            >
+              Dirección
+            </Box>
+
+            <Box sx={{ fontSize: { lg: 12, xl: 14 } }}>
+              {spreadsheet.map((client) => {
+                return (
+                  <Box
+                    sx={{
+                      borderInline: "2px solid black",
+                      borderTop: "1px solid black",
+                      borderBottom: "3px solid black",
+                      padding: 2,
+                      height: 144,
+
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    key={client._id}
+                  >
+                    {client.direccion != "" ? client.direccion : "-"}
+                  </Box>
+                );
+              })}
+            </Box>
+          </Box>
+          <Box sx={{ textAlign: "center" }}>
+            <Box
+              sx={{
+                fontSize: { md: 14, lg: 16 },
+                height: 60,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: "bold",
+                border: "2px solid black",
+                borderBottom: "2px solid black",
+                padding: 1,
+              }}
+            >
+              Teléfono
+            </Box>
+
+            <Box sx={{ fontSize: { lg: 12, xl: 14 } }}>
+              {spreadsheet.map((client) => {
+                return (
+                  <Box
+                    sx={{
+                      borderInline: "2px solid black",
+                      borderTop: "1px solid black",
+                      borderBottom: "3px solid black",
+                      padding: 2,
+                      height: 144,
+
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    key={client._id}
+                  >
+                    {client.telefono != "" ? client.telefono : "-"}
+                  </Box>
+                );
+              })}
+            </Box>
+          </Box>
+          <Box sx={{ textAlign: "center" }}>
+            <Box
+              sx={{
+                fontSize: { md: 14, lg: 16 },
+                height: 60,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: "bold",
+                border: "2px solid black",
+                borderBottom: "2px solid black",
+                padding: 1,
+              }}
+            >
+              Mercaderias
+            </Box>
+
+            <Box sx={{ fontSize: { lg: 12, xl: 14 } }}>
+              {spreadsheet.map((client) => {
+                return (
+                  <Box
+                    sx={{
+                      borderInline: "2px solid black",
+                      borderTop: "1px solid black",
+                      borderBottom: "3px solid black",
+                      padding: 2,
+                      height: 144,
+
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    key={client._id}
+                  >
+                    {client.mercaderias != "" ? client.mercaderias : "-"}
+                  </Box>
+                );
+              })}
+            </Box>
+          </Box>
+          <Box sx={{ textAlign: "center", height: "100%" }}>
+            <Box
+              sx={{
+                fontSize: { md: 14, lg: 16 },
+                height: 60,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: "bold",
+                border: "2px solid black",
+                borderBottom: "2px solid black",
+                padding: 1,
+              }}
+            >
+              Prendas
+            </Box>
+
+            <Box
+              sx={{
+                fontSize: { lg: 12, xl: 14 },
+              }}
+            >
+              {spreadsheet.map((client) => {
+                return (
+                  <Box
+                    sx={{
+                      borderInline: "2px solid black",
+                      borderTop: "1px solid black",
+                      borderBottom: "3px solid black",
+                      height: 144,
+
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: 2,
+                    }}
+                    key={client._id}
+                  >
+                    {client.prendas != "" ? client.prendas : "-"}
+                  </Box>
+                );
+              })}
+            </Box>
+          </Box>
+          <Box sx={{ textAlign: "center" }}>
+            <Box
+              sx={{
+                fontSize: { md: 14, lg: 16 },
+                height: 60,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: "bold",
+                border: "2px solid black",
+                borderBottom: "2px solid black",
+                padding: 1,
+              }}
+            >
+              Zapatillas
+            </Box>
+
+            <Box sx={{ fontSize: { lg: 12, xl: 14 } }}>
+              {spreadsheet.map((client) => {
+                return (
+                  <Box
+                    sx={{
+                      borderInline: "2px solid black",
+                      borderTop: "1px solid black",
+                      borderBottom: "3px solid black",
+                      padding: 2,
+                      height: 144,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    key={client._id}
+                  >
+                    {client.zapatillas != "" ? client.zapatillas : "-"}
+                  </Box>
+                );
+              })}
+            </Box>
+          </Box>
+          <Box sx={{ textAlign: "center" }}>
+            <Box
+              sx={{
+                fontSize: { md: 14, lg: 16 },
+                height: 60,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: "bold",
+                border: "2px solid black",
+                borderBottom: "2px solid black",
+                padding: 1,
+              }}
+            >
+              Microcrédito
+            </Box>
+
+            <Box sx={{ fontSize: { lg: 12, xl: 14 } }}>
+              {spreadsheet.map((client) => {
+                return (
+                  <Box
+                    sx={{
+                      borderInline: "2px solid black",
+                      borderTop: "1px solid black",
+                      borderBottom: "3px solid black",
+                      padding: 2,
+                      height: 144,
+
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    key={client._id}
+                  >
+                    {client.microCredito != "" ? client.microCredito : "-"}
+                  </Box>
+                );
+              })}
+            </Box>
+          </Box>
+          <Box sx={{ textAlign: "center" }}>
+            <Box
+              sx={{
+                fontSize: { md: 14, lg: 16 },
+                height: 60,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: "bold",
+                border: "2px solid black",
+                borderBottom: "2px solid black",
+                padding: 1,
+              }}
+            >
+              N° Cuota
+            </Box>
+
+            <Box sx={{ fontSize: { lg: 12, xl: 14 } }}>
+              {spreadsheet.map((client) => {
+                return (
+                  <Box
+                    sx={{
+                      borderInline: "2px solid black",
+                      borderTop: "1px solid black",
+                      borderBottom: "3px solid black",
+                      padding: 2,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      height: 144,
+                    }}
+                    key={client._id}
+                  >
+                    {client.numeroCuota != "" ? client.numeroCuota : "-"}
+                  </Box>
+                );
+              })}
+            </Box>
+          </Box>
+          <Box sx={{ textAlign: "center" }}>
+            <Box
+              sx={{
+                fontSize: { md: 14, lg: 16 },
+                height: 60,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: "bold",
+                border: "2px solid black",
+                borderBottom: "2px solid black",
+                padding: 1,
+              }}
+            >
+              Comentarios
+            </Box>
+
+            <Box sx={{ fontSize: { lg: 12, xl: 14 } }}>
+              {spreadsheet.map((client) => {
+                return (
+                  <Box
+                    sx={{
+                      borderInline: "2px solid black",
+                      borderTop: "1px solid black",
+                      borderBottom: "3px solid black",
+                      padding: 2,
+                      height: 144,
+
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    key={client._id}
+                  >
+                    {client.otros != "" ? client.otros : "-"}
+                  </Box>
+                );
+              })}
+            </Box>
+          </Box>
+          <Box sx={{ textAlign: "center" }}>
+            <Box
+              sx={{
+                fontSize: { md: 14, lg: 16 },
+                fontWeight: "bold",
+                border: "2px solid black",
+                borderBottom: "2px solid black",
+                padding: 1,
+                height: 60,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              Fecha
+            </Box>
+
+            <Box sx={{ fontSize: { lg: 12, xl: 14 } }}>
+              {spreadsheet.map((client) => {
+                return (
+                  <Box key={client._id}>
+                    <Box
+                      sx={{
+                        borderInline: "2px solid black",
+                        borderTop: "1px solid black",
+                        borderBottom: "3px solid black",
+                        padding: 2,
+                        height: 144,
+                        width: 73.5,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {`${client.fecha[8]}${client.fecha[9]}${client.fecha[7]}${client.fecha[5]}${client.fecha[6]}`}
+                    </Box>
+                  </Box>
+                );
+              })}
+            </Box>
+          </Box>
+        </Box>
+      )}
+
+      {spreadsheet?.length !== 0 && (
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Button
+            variant="contained"
+            sx={{
+              height: 40,
+              textAlign: "center",
+              fontSize: { lg: 12, xl: 14, xs: 11 },
+              marginBottom: 5,
+              backgroundColor: "#185457",
+              ":hover": { background: "#a2ede6", color: "black" },
+              display: buttonVis,
+            }}
+            onClick={() => {
+              setVisibility("flex");
+              setButtonVis("none");
+            }}
+          >
+            Borrar Documento
+          </Button>
+        </Box>
+      )}
+
+      {spreadsheet?.length !== 0 && (
+        <Box sx={{ position: "absolute", height: 0, width: 0 }}>
+          <Box
+            sx={{
+              backgroundColor: "#185457",
+              minHeight: { xl: "26rem", sm: "23rem", xs: "19rem" },
+              borderRadius: 3,
+              position: "relative",
+              left: { xs: "10vw", sm: "27vw", md: "37vw" },
+              top: "-64vh",
+              display: visibility,
+              flexDirection: "column",
+              alignItems: "center",
+              width: { xl: "30rem", sm: "25rem", xs: "85vw" },
+              overflow: "auto",
+            }}
+          >
+            <Box
+              sx={{
+                marginTop: 3,
+                color: "white",
+                fontSize: { xl: "40px", lg: "36px", xs: "30px" },
+              }}
+            >
+              Borrar Cliente
+            </Box>
+            <CloseIcon
+              sx={{
+                position: "sticky",
+                bottom: 510,
+                left: 550,
+                color: "white",
+                fontSize: 30,
+                cursor: "pointer",
+              }}
+              className="closeIcon"
+              onClick={() => {
+                setVisibility(visibility == "none" ? "flex" : "none");
+                setButtonVis("block");
+              }}
+            />
+
+            {spreadsheet.map((clients) => {
+              return (
+                <Box
+                  key={clients._id}
+                  sx={{
+                    display: "flex",
+                    gap: 4,
+                    backgroundColor: "white",
+                    borderRadius: 1,
+                    padding: 2,
+                    marginBottom: 3,
+                    fontSize: { xl: "20px", lg: "16px", xs: "12px" },
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Box>{clients.apellido}</Box>
+                  <Box>{clients.dni}</Box>
+                  <Box>{`${clients.fecha[8]}${clients.fecha[9]}${clients.fecha[7]}${clients.fecha[5]}${clients.fecha[6]}`}</Box>
+
+                  <DeleteForeverIcon
+                    sx={{
+                      cursor: "pointer",
+                      fontSize: { xl: "40px", lg: "36px", xs: "30px" },
+                      alignSelf: "end",
+                    }}
+                    onClick={async () => {
+                      const deleteUser = await fetch(
+                        "https://asociation-copy-api.vercel.app/api/clients/deleteClient",
+                        {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ id: clients._id }),
+                        }
+                      );
+
+                      if (deleteUser.status === 200) {
+                        await deleteUser.json();
+                        setErase(erase === false ? true : false);
+                      }
+                    }}
+                  />
                 </Box>
               );
             })}
           </Box>
         </Box>
-      </Box>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Button
-          variant="contained"
-          sx={{
-            height: 40,
-            textAlign: "center",
-            fontSize: { lg: 12, xl: 14, xs: 11 },
-            marginBottom: 5,
-            backgroundColor: "#185457",
-            ":hover": { background: "#a2ede6", color: "black" },
-            display: buttonVis,
-          }}
-          onClick={() => {
-            setVisibility("flex");
-            setButtonVis("none");
-          }}
-        >
-          Borrar Documento
-        </Button>
-      </Box>
-      <Box></Box>
-      <Box
-        sx={{
-          backgroundColor: "#185457",
-          height: { xl: "30rem", lg: "25rem", xs: "20rem" },
-          borderRadius: 3,
-          position: "fixed",
-          left: "37vw",
-          top: "25vh",
-          display: visibility,
-          flexDirection: "column",
-          alignItems: "center",
-          width: { xl: "30rem", lg: "25rem", xs: "20rem" },
-          overflowY: "scroll",
-        }}
-      >
-        <Box
-          sx={{
-            marginTop: 3,
-            color: "white",
-            fontSize: { xl: "40px", lg: "36px", xs: "30px" },
-          }}
-        >
-          Borrar Cliente
-        </Box>
-        <CloseIcon
-          sx={{
-            position: "sticky",
-            bottom: 510,
-            left: 550,
-            color: "white",
-            fontSize: 30,
-            cursor: "pointer",
-          }}
-          className="closeIcon"
-          onClick={() => {
-            setVisibility(visibility == "none" ? "flex" : "none");
-            setButtonVis("block");
-          }}
-        />
-
-        {spreadsheet.map((clients) => {
-          return (
-            <Box
-              key={clients._id}
-              sx={{
-                display: "flex",
-                gap: 4,
-                backgroundColor: "white",
-                borderRadius: 1,
-                padding: 2,
-                marginBottom: 3,
-                width: { xl: "400px", lg: "300px", xs: "200px" },
-                fontSize: { xl: "20px", lg: "16px", xs: "12px" },
-                alignItems: "center",
-              }}
-            >
-              <Box>{clients.apellido}</Box>
-              <Box>{clients.dni}</Box>
-              <Box>{clients.fecha.slice(5, 10)}</Box>
-
-              <DeleteForeverIcon
-                sx={{
-                  cursor: "pointer",
-                  fontSize: { xl: "40px", lg: "36px", xs: "30px" },
-                }}
-                onClick={async () => {
-                  const deleteUser = await fetch(
-                    "https://asociation-copy-api.vercel.app/api/clients/deleteClient",
-                    {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ id: clients._id }),
-                    }
-                  );
-
-                  if (deleteUser.status === 200) {
-                    await deleteUser.json();
-                    setErase(erase === false ? true : false);
-                  }
-                }}
-              />
-            </Box>
-          );
-        })}
-      </Box>
+      )}
     </Box>
   );
 };
