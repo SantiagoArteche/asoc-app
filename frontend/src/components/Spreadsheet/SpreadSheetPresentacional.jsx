@@ -270,7 +270,7 @@ export const SpreadSheetPresentacional = ({
             display: "flex",
             justifyContent: innerWidth < 1300 ? "start" : "center",
             marginTop: 10,
-            overflowX: "auto",
+            overflow: "auto",
             marginBottom: 8,
             marginInline: 1,
             color: "white",
