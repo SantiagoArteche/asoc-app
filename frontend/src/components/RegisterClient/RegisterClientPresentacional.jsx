@@ -6,7 +6,7 @@ export const RegisterClientPresentacional = ({
   Button,
   theme,
   errors,
-
+  values,
   Box,
   Link,
 }) => {
@@ -55,6 +55,7 @@ export const RegisterClientPresentacional = ({
               label="DNI"
               variant="filled"
               component={"div"}
+              value={values.dni}
               color="grey"
               theme={theme}
               onChange={handleChange}
@@ -82,6 +83,7 @@ export const RegisterClientPresentacional = ({
               name="nombre"
               label="Nombre"
               variant="filled"
+              value={values.nombre}
               color="grey"
               onChange={handleChange}
               theme={theme}
@@ -107,6 +109,7 @@ export const RegisterClientPresentacional = ({
             <TextField
               name="apellido"
               label="Apellido"
+              value={values.apellido}
               variant="filled"
               color="grey"
               error={errors.apellido ? true : false}
@@ -134,6 +137,7 @@ export const RegisterClientPresentacional = ({
               name="grupoFamiliar"
               label="Grupo Familiar"
               variant="filled"
+              value={values.grupoFamiliar}
               color="grey"
               error={errors.grupoFamiliar ? true : false}
               helperText={errors.grupoFamiliar}
@@ -159,6 +163,7 @@ export const RegisterClientPresentacional = ({
             <TextField
               name="direccion"
               label="Dirección"
+              value={values.direccion}
               variant="filled"
               color="grey"
               error={errors.direccion ? true : false}
@@ -185,6 +190,7 @@ export const RegisterClientPresentacional = ({
             <TextField
               name="telefono"
               label="Teléfono"
+              value={values.telefono}
               variant="filled"
               color="grey"
               error={errors.telefono ? true : false}
@@ -231,6 +237,7 @@ export const RegisterClientPresentacional = ({
             <TextField
               name="mercaderias"
               label="Mercaderias"
+              value={values.mercaderias}
               variant="filled"
               color="grey"
               onChange={handleChange}
@@ -255,6 +262,7 @@ export const RegisterClientPresentacional = ({
             <TextField
               name="prendas"
               label="Prendas"
+              value={values.prendas}
               variant="filled"
               color="grey"
               onChange={handleChange}
@@ -279,6 +287,7 @@ export const RegisterClientPresentacional = ({
             <TextField
               name="zapatillas"
               label="Zapatillas"
+              value={values.zapatillas}
               color="grey"
               variant="filled"
               theme={theme}
@@ -303,6 +312,7 @@ export const RegisterClientPresentacional = ({
             <TextField
               name="microCredito"
               label="Micro Crédito"
+              value={values.microCredito}
               variant="filled"
               color="grey"
               onChange={handleChange}
@@ -327,6 +337,7 @@ export const RegisterClientPresentacional = ({
             <TextField
               name="numeroCuota"
               label="Número de Cuota"
+              value={values.numeroCuota}
               variant="filled"
               color="grey"
               onChange={handleChange}
@@ -367,6 +378,7 @@ export const RegisterClientPresentacional = ({
               color="grey"
               theme={theme}
               name="otros"
+              value={values.otros}
               sx={{
                 minWidth: { xs: "15rem", md: "200px", lg: "250px" },
                 minHeight: "80px",

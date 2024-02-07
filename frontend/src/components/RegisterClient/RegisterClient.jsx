@@ -24,7 +24,7 @@ export const RegisterClient = () => {
     },
   });
 
-  const { handleSubmit, handleChange, errors } = useFormik({
+  const { handleSubmit, handleChange, errors, values, resetForm } = useFormik({
     initialValues: {
       nombre: "",
       dni: "",
@@ -52,6 +52,7 @@ export const RegisterClient = () => {
       if (createUser.status == 200) {
         await createUser.json();
         alert("Cliente registrado!!");
+        resetForm();
       }
     },
     validateOnChange: false,
@@ -83,6 +84,7 @@ export const RegisterClient = () => {
       Box={Box}
       Link={Link}
       FormControl={FormControl}
+      values={values}
     />
   );
 };
