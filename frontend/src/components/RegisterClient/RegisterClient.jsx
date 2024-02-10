@@ -83,7 +83,7 @@ export const RegisterClient = () => {
       Grid={Grid}
       Box={Box}
       Link={Link}
-      FormControl={FormControl}
+      resetForm={resetForm}
       values={values}
     />
   );

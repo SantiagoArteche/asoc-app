@@ -9,6 +9,7 @@ export const RegisterClientPresentacional = ({
   values,
   Box,
   Link,
+  resetForm,
 }) => {
   return (
     <Box
@@ -416,6 +417,7 @@ export const RegisterClientPresentacional = ({
               fontSize: { xs: 14, xl: 16 },
               ":hover": { backgroundColor: "#a2ede6" },
             }}
+            onClick={resetForm}
           >
             Restablecer
           </Button>
