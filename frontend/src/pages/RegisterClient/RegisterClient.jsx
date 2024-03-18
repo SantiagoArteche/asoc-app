@@ -11,6 +11,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { RegisterClientPresentacional } from "./RegisterClientPresentacional.jsx";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const RegisterClient = () => {
   const theme = createTheme({
@@ -51,7 +52,7 @@ export const RegisterClient = () => {
 
       if (createUser.status == 200) {
         await createUser.json();
-        alert("Cliente registrado!!");
+        Swal.fire("Completado!", "Cliente registrado correctamente", "success");
         resetForm();
       }
     },

@@ -12,6 +12,40 @@ clientRouter.get("/", async (request, response) => {
   }
 });
 
+clientRouter.post("/lastName", async (request, response) => {
+  const { lastName } = request.body;
+
+  try {
+    const clients = await clientModel.find({
+      apellido: lastName,
+    });
+
+    if (clients.length === 0) {
+      return response.status(400).send("No existe cliente con ese apellido");
+    }
+
+    response.status(200).send(clients);
+  } catch (error) {
+    response.status(400).send(error);
+  }
+});
+
+clientRouter.post("/dni", async (request, response) => {
+  const { dni } = request.body;
+
+  try {
+    const clients = await clientModel.find({ dni: dni });
+
+    if (clients.length === 0) {
+      return response.status(400).send("No existe cliente con ese dni");
+    }
+    console.log(clients);
+    response.status(200).send(clients);
+  } catch (error) {
+    response.status(400).send(error);
+  }
+});
+
 clientRouter.post("/", async (request, response) => {
   const {
     dni,

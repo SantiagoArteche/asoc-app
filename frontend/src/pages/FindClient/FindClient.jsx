@@ -1,28 +1,98 @@
-export const SpreadSheetPresentacional = ({
-  Box,
-  Button,
-  Link,
-  component,
-  componentB,
-  setDate,
-  spreadsheet,
-  DeleteForeverIcon,
-  CloseIcon,
-  setErase,
-  erase,
-  setButtonVis,
-  buttonVis,
-  visibility,
-  setVisibility,
-  changeComponents,
-  dateBChange,
-  dateB,
-}) => {
+import { useEffect, useState } from "react";
+import { Box, Button, TextField, createTheme } from "@mui/material";
+import { Link } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import Swal from "sweetalert2";
+
+export const FindClient = () => {
+  const [spreadsheet, setSpreadsheet] = useState([]);
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#1a8587",
+      },
+      lighter: "#1a8587",
+      semiDark: "#08282b",
+      dark: "#08282b",
+    },
+  });
+
+  const { handleChange, handleSubmit, resetForm, values, errors } = useFormik({
+    initialValues: {
+      dni: "",
+    },
+    validateOnChange: false,
+    onSubmit: async ({ dni }) => {
+      const findClientByDNI = await fetch(
+        "https://asociation-copy-api.vercel.app/api/clients/dni",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ dni }),
+        }
+      );
+
+      if (findClientByDNI.status === 200) {
+        setSpreadsheet(await findClientByDNI.json());
+      } else {
+        Swal.fire("Error", "No existe cliente con ese dni", "error");
+      }
+
+      resetForm();
+    },
+    validationSchema: Yup.object({
+      dni: Yup.string().required("Dni es requerido"),
+    }),
+  });
+
+  const {
+    handleChange: changeLastName,
+    handleSubmit: submitLastName,
+    resetForm: resetLastName,
+    values: valuesLastName,
+    errors: errorsLastName,
+  } = useFormik({
+    initialValues: {
+      apellido: "",
+    },
+    validateOnChange: false,
+    onSubmit: async ({ apellido }) => {
+      const capitalizeLastName = `${apellido[0].toUpperCase()}${apellido.slice(
+        1,
+        apellido.length
+      )}`;
+
+      const findClientByLastName = await fetch(
+        "https://asociation-copy-api.vercel.app/api/clients/lastName",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ lastName: capitalizeLastName }),
+        }
+      );
+
+      if (findClientByLastName.status === 200) {
+        setSpreadsheet(await findClientByLastName.json());
+      } else {
+        Swal.fire("Error", "No existe cliente con ese apellido", "error");
+      }
+
+      resetLastName();
+    },
+    validationSchema: Yup.object({
+      apellido: Yup.string().required("Apellido es requerido"),
+    }),
+  });
   return (
     <Box sx={{ minHeight: "85vh", bgcolor: "#08282b" }}>
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box sx={{ display: "flex", mx: 5 }}>
         <Link
-          to="/"
+          to="/spreadsheet"
           style={{
             textDecoration: "none",
             fontSize: 28,
@@ -33,237 +103,122 @@ export const SpreadSheetPresentacional = ({
             marginLeft: 11,
           }}
         >
-          {"< Registrar cliente"}
+          {"< Planillas"}
         </Link>
-        <Button
-          onClick={() => {
-            changeComponents();
-            dateBChange();
-          }}
+      </Box>
+
+      <Box
+        sx={{
+          textAlign: "center",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginInline: 8,
+          fontSize: { xs: 23, sm: 28, md: 35 },
+          color: "white",
+        }}
+        component="form"
+        onSubmit={handleSubmit}
+      >
+        <TextField
+          name="dni"
+          label="Buscar por DNI"
+          variant="filled"
+          component={"div"}
+          value={values.dni}
+          color="grey"
+          theme={theme}
+          onChange={handleChange}
+          error={errors.dni ? true : false}
+          helperText={errors.dni}
           sx={{
-            alignSelf: "center",
-            marginBottom: 3,
-            fontSize: { lg: 12, xl: 15, xs: 11 },
-            backgroundColor: "#185457",
-            ":hover": { background: "#a2ede6", color: "black" },
+            backgroundColor: "lighter",
+            borderRadius: 1,
+            ":hover": {
+              ".css-taxdav-MuiFormLabel-root-MuiInputLabel-root": {
+                color: "black",
+              },
+            },
+            "& .MuiInputLabel-root": {
+              color: "white",
+            },
+            "& .MuiFilledInput-root": {
+              color: "white",
+              textColor: "red",
+            },
           }}
+        />
+        <Button
           variant="contained"
+          type="submit"
+          theme={theme}
+          sx={{
+            backgroundColor: "lighter",
+            mx: 5,
+            fontSize: { xs: 14, xl: 16 },
+            ":hover": { backgroundColor: "#a2ede6" },
+          }}
         >
-          Cambiar Año De Las Planillas
+          Enviar
         </Button>
       </Box>
-      <Box>
-        <Box
+
+      <Box
+        sx={{
+          textAlign: "center",
+          marginTop: 5,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginInline: 8,
+          fontSize: { xs: 23, sm: 28, md: 35 },
+          color: "white",
+        }}
+        component="form"
+        onSubmit={submitLastName}
+      >
+        <TextField
+          name="apellido"
+          label="Buscar por Apellido"
+          variant="filled"
+          component={"div"}
+          value={valuesLastName.apellido}
+          color="grey"
+          theme={theme}
+          onChange={changeLastName}
+          error={errorsLastName.apellido ? true : false}
+          helperText={errorsLastName.apellido}
           sx={{
-            gap: 5,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            marginBottom: 5,
-            marginInline: 0.8,
+            backgroundColor: "lighter",
+            borderRadius: 1,
+            ":hover": {
+              ".css-taxdav-MuiFormLabel-root-MuiInputLabel-root": {
+                color: "black",
+              },
+            },
+            "& .MuiInputLabel-root": {
+              color: "white",
+            },
+            "& .MuiFilledInput-root": {
+              color: "white",
+              textColor: "red",
+            },
+          }}
+        />
+        <Button
+          variant="contained"
+          type="submit"
+          theme={theme}
+          sx={{
+            backgroundColor: "lighter",
+            mx: 5,
+            fontSize: { xs: 14, xl: 16 },
+            ":hover": { backgroundColor: "#a2ede6" },
           }}
         >
-          <Box style={{ display: component }}>
-            <Box
-              sx={{
-                color: "white",
-                textAlign: "center",
-                fontSize: { lg: 33, xl: 40, xs: 28 },
-              }}
-            >
-              2023
-            </Box>
-
-            <Box sx={{ marginTop: 5 }}>
-              <Button
-                variant="contained"
-                onClick={() => setDate(1223)}
-                sx={{
-                  fontSize: { xs: 10, md: 12, lg: 13 },
-                  backgroundColor: "#185457",
-                  ":hover": { background: "#a2ede6", color: "black" },
-                }}
-              >
-                Diciembre
-              </Button>
-            </Box>
-          </Box>
-          <Box style={{ display: componentB }}>
-            <Box
-              sx={{
-                color: "white",
-                textAlign: "center",
-                fontSize: { lg: 33, xl: 40, xs: 28 },
-              }}
-            >
-              2024
-            </Box>
-
-            <Box
-              sx={{
-                gap: { lg: 3.5, xl: 5, xs: 3 },
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: 5,
-                fontSize: 30,
-              }}
-            >
-              <Button
-                variant="contained"
-                onClick={() => setDate("0124")}
-                sx={{
-                  fontSize: { xs: 10, md: 12, lg: 13 },
-                  backgroundColor: "#185457",
-                  ":hover": { background: "#a2ede6", color: "black" },
-                }}
-              >
-                Enero
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => setDate("0224")}
-                sx={{
-                  fontSize: { xs: 10, md: 12, lg: 13 },
-                  backgroundColor: "#185457",
-                  ":hover": { background: "#a2ede6", color: "black" },
-                }}
-              >
-                Febrero
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => setDate("0324")}
-                sx={{
-                  fontSize: { xs: 10, md: 12, lg: 13 },
-                  backgroundColor: "#185457",
-                  ":hover": { background: "#a2ede6", color: "black" },
-                }}
-              >
-                Marzo
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => setDate("0424")}
-                sx={{
-                  fontSize: { xs: 10, md: 12, lg: 13 },
-                  backgroundColor: "#185457",
-                  ":hover": { background: "#a2ede6", color: "black" },
-                }}
-              >
-                Abril
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => setDate("0524")}
-                sx={{
-                  fontSize: { xs: 10, md: 12, lg: 13 },
-                  backgroundColor: "#185457",
-                  ":hover": { background: "#a2ede6", color: "black" },
-                }}
-              >
-                Mayo
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => setDate("0624")}
-                sx={{
-                  fontSize: { xs: 10, md: 12, lg: 13 },
-                  backgroundColor: "#185457",
-                  ":hover": { background: "#a2ede6", color: "black" },
-                }}
-              >
-                Junio
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => setDate("0724")}
-                sx={{
-                  fontSize: { xs: 10, md: 12, lg: 13 },
-                  backgroundColor: "#185457",
-                  ":hover": { background: "#a2ede6", color: "black" },
-                }}
-              >
-                Julio
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => setDate("0824")}
-                sx={{
-                  fontSize: { xs: 10, md: 12, lg: 13 },
-                  backgroundColor: "#185457",
-                  ":hover": { background: "#a2ede6", color: "black" },
-                }}
-              >
-                Agosto
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => setDate("0924")}
-                sx={{
-                  fontSize: { xs: 10, md: 12, lg: 13 },
-                  backgroundColor: "#185457",
-                  ":hover": { background: "#a2ede6", color: "black" },
-                }}
-              >
-                Septiembre
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => setDate(1024)}
-                sx={{
-                  fontSize: { xs: 10, md: 12, lg: 13 },
-                  backgroundColor: "#185457",
-                  ":hover": { background: "#a2ede6", color: "black" },
-                }}
-              >
-                Octubre
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => setDate(1124)}
-                sx={{
-                  fontSize: { xs: 10, md: 12, lg: 13 },
-                  backgroundColor: "#185457",
-                  ":hover": { background: "#a2ede6", color: "black" },
-                }}
-              >
-                Noviembre
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => setDate(1224)}
-                sx={{
-                  fontSize: { xs: 10, md: 12, lg: 13 },
-                  backgroundColor: "#185457",
-                  ":hover": { background: "#a2ede6", color: "black" },
-                }}
-              >
-                Diciembre
-              </Button>
-            </Box>
-          </Box>
-        </Box>
+          Enviar
+        </Button>
       </Box>
-      {spreadsheet.length === 0 && (
-        <Box
-          sx={{
-            textAlign: "center",
-            marginTop: dateB.includes("23") ? { xs: 20 } : { xs: 15, sm: 20 },
-            paddingBottom: dateB.includes("23")
-              ? { xs: 20 }
-              : { xs: 15, sm: 0 },
-            marginInline: 8,
-            fontSize: { xs: 23, sm: 28, md: 35 },
-            color: "white",
-          }}
-        >
-          {`Selecciona uno de los botones de arriba para traer la plantilla con su
-        respectivo año y mes (Recuerda que los clientes se registran con la fecha del día actual)`}
-        </Box>
-      )}
-
       {spreadsheet?.length !== 0 && (
         <Box
           sx={{
@@ -805,120 +760,6 @@ export const SpreadSheetPresentacional = ({
                 );
               })}
             </Box>
-          </Box>
-        </Box>
-      )}
-
-      {spreadsheet?.length !== 0 && (
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Button
-            variant="contained"
-            sx={{
-              height: 40,
-              textAlign: "center",
-              fontSize: { lg: 12, xl: 14, xs: 11 },
-              marginBottom: 5,
-              backgroundColor: "#185457",
-              ":hover": { background: "#a2ede6", color: "black" },
-              display: buttonVis,
-            }}
-            onClick={() => {
-              setVisibility("flex");
-              setButtonVis("none");
-            }}
-          >
-            Borrar Documento
-          </Button>
-        </Box>
-      )}
-
-      {spreadsheet?.length !== 0 && (
-        <Box sx={{ position: "absolute", height: 0, width: 0 }}>
-          <Box
-            sx={{
-              backgroundColor: "#185457",
-              minHeight: { xl: "26rem", sm: "23rem", xs: "19rem" },
-              borderRadius: 3,
-              position: "relative",
-              left: { xs: "10vw", sm: "27vw", md: "37vw" },
-              top: "-64vh",
-              display: visibility,
-              flexDirection: "column",
-              alignItems: "center",
-              width: { xl: "30rem", sm: "25rem", xs: "85vw" },
-              overflow: "auto",
-            }}
-          >
-            <Box
-              sx={{
-                marginTop: 3,
-                color: "white",
-                fontSize: { xl: "40px", lg: "36px", xs: "30px" },
-              }}
-            >
-              Borrar Cliente
-            </Box>
-            <CloseIcon
-              sx={{
-                position: "sticky",
-                bottom: 510,
-                left: 550,
-                color: "white",
-                fontSize: 30,
-                cursor: "pointer",
-              }}
-              className="closeIcon"
-              onClick={() => {
-                setVisibility(visibility == "none" ? "flex" : "none");
-                setButtonVis("block");
-              }}
-            />
-
-            {spreadsheet.map((clients) => {
-              return (
-                <Box
-                  key={clients._id}
-                  sx={{
-                    display: "flex",
-                    gap: 4,
-                    backgroundColor: "white",
-                    borderRadius: 1,
-                    padding: 2,
-                    marginBottom: 3,
-                    fontSize: { xl: "20px", lg: "16px", xs: "12px" },
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Box>{clients.apellido}</Box>
-                  <Box>{clients.dni}</Box>
-                  <Box>{`${clients.fecha[8]}${clients.fecha[9]}${clients.fecha[7]}${clients.fecha[5]}${clients.fecha[6]}`}</Box>
-
-                  <DeleteForeverIcon
-                    sx={{
-                      cursor: "pointer",
-                      fontSize: { xl: "40px", lg: "36px", xs: "30px" },
-                      alignSelf: "end",
-                    }}
-                    onClick={async () => {
-                      const deleteUser = await fetch(
-                        "https://asociation-copy-api.vercel.app/api/clients/deleteClient",
-                        {
-                          method: "POST",
-                          headers: { "Content-Type": "application/json" },
-                          body: JSON.stringify({ id: clients._id }),
-                        }
-                      );
-
-                      if (deleteUser.status === 200) {
-                        await deleteUser.json();
-                        setErase(erase === false ? true : false);
-                      }
-                    }}
-                  />
-                </Box>
-              );
-            })}
           </Box>
         </Box>
       )}

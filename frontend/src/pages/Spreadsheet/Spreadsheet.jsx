@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { SpreadSheetPresentacional } from "./SpreadSheetPresentacional";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import CloseIcon from "@mui/icons-material/Close";
+
 export const Spreadsheet = () => {
   const [date, setDate] = useState("1223");
   const [component, setComponent] = useState("");
@@ -13,6 +14,7 @@ export const Spreadsheet = () => {
   const [visibility, setVisibility] = useState("none");
   const [buttonVis, setButtonVis] = useState("block");
   const [dateB, setDateB] = useState("23");
+
   useEffect(() => {
     fetch("https://asociation-copy-api.vercel.app/api/clients")
       .then((res) => res.json())
