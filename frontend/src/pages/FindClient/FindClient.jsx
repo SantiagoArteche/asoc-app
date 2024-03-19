@@ -89,7 +89,7 @@ export const FindClient = () => {
     }),
   });
   return (
-    <Box sx={{ minHeight: "85vh", bgcolor: "#08282b", paddingBottom: 30 }}>
+    <Box sx={{ minHeight: "85vh", bgcolor: "#08282b", paddingBottom: "80px" }}>
       <Box sx={{ display: "flex", mx: 5 }}>
         <Link
           to="/spreadsheet"
