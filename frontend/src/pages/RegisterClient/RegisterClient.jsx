@@ -41,9 +41,10 @@ export const RegisterClient = () => {
       otros: "",
     },
     onSubmit: async (datos) => {
-      datos.apellido = `${datos.apellido[0].toUpperCase()}${datos.apellido.slice(
+      const { apellido: lastName, ...rest } = datos;
+      const apellidoUpperCase = `${lastName[0].toUpperCase()}${lastName.slice(
         1,
-        datos.apellido.length
+        lastName.length
       )}`;
 
       const createUser = await fetch(
@@ -51,7 +52,7 @@ export const RegisterClient = () => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(datos),
+          body: JSON.stringify({ ...rest, apellido: apellidoUpperCase }),
         }
       );
 
