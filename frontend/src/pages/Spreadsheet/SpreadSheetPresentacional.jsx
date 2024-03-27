@@ -849,15 +849,15 @@ export const SpreadSheetPresentacional = ({
       )}
 
       {spreadsheet?.length !== 0 && (
-        <Box sx={{ position: "absolute", height: 0, width: 0 }}>
+        <>
           <Box
             sx={{
               backgroundColor: "#185457",
-              minHeight: { xl: "26rem", sm: "23rem", xs: "19rem" },
+              height: { xl: "30rem", lg: "25rem", xs: "20rem" },
               borderRadius: 3,
               position: "fixed",
-              left: { xs: "10vw", sm: "27vw", md: "37vw" },
-              top: "-64vh",
+              left: "37vw",
+              top: "25vh",
               display: visibility,
               flexDirection: "column",
               alignItems: "center",
@@ -936,7 +936,7 @@ export const SpreadSheetPresentacional = ({
               );
             })}
           </Box>
-        </Box>
+        </>
       )}
     </Box>
   );
