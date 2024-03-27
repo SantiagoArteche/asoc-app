@@ -855,7 +855,7 @@ export const SpreadSheetPresentacional = ({
               backgroundColor: "#185457",
               minHeight: { xl: "26rem", sm: "23rem", xs: "19rem" },
               borderRadius: 3,
-              position: "relative",
+              position: "fixed",
               left: { xs: "10vw", sm: "27vw", md: "37vw" },
               top: "-64vh",
               display: visibility,
