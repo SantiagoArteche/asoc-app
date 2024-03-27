@@ -42,10 +42,9 @@ export const RegisterClient = () => {
     },
     onSubmit: async (datos) => {
       const { apellido: lastName, ...rest } = datos;
-      const apellidoUpperCase = `${lastName[0].toUpperCase()}${lastName.slice(
-        1,
-        lastName.length
-      )}`;
+      const apellidoUpperCase = `${lastName[0].toUpperCase()}${lastName
+        .slice(1, lastName.length)
+        .toLowerCase()}`;
 
       const createUser = await fetch(
         "https://asociation-copy-api.vercel.app/api/clients",
