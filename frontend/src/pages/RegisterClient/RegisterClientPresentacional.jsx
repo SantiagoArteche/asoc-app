@@ -343,6 +343,8 @@ export const RegisterClientPresentacional = ({
               color="grey"
               onChange={handleChange}
               theme={theme}
+              error={errors.numeroCuota ? true : false}
+              helperText={errors.numeroCuota}
               sx={{
                 borderRadius: 1,
                 backgroundColor: "lighter",
