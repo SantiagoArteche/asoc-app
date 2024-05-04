@@ -11,7 +11,7 @@ export const clientRouter = Router();
 
 clientRouter.get("/", getAllClients);
 
-clientRouter.get("/lastName/:lastname", findByLastName);
+clientRouter.get("/lastName/:lastName", findByLastName);
 
 clientRouter.get("/dni/:dni", findByDni);
 

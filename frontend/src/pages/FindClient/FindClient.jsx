@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Box, Button, TextField, createTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
@@ -57,11 +57,9 @@ export const FindClient = () => {
         1,
         apellido.length
       )}`;
-
       const findClientByLastName = await fetch(
-        `https://asociation-copy-api.vercel.app/api/clients/lastName/${apellido}`
+        `https://asociation-copy-api.vercel.app/api/clients/lastName/${capitalizeLastName}`
       );
-
       if (findClientByLastName.status === 200) {
         setSpreadsheet(await findClientByLastName.json());
       } else {
