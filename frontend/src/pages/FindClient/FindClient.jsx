@@ -25,14 +25,7 @@ export const FindClient = () => {
     validateOnChange: false,
     onSubmit: async ({ dni }) => {
       const findClientByDNI = await fetch(
-        "https://asociation-copy-api.vercel.app/api/clients/dni",
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({ dni }),
-        }
+        `https://asociation-copy-api.vercel.app/api/clients/dni/${dni}`
       );
 
       if (findClientByDNI.status === 200) {
@@ -66,14 +59,7 @@ export const FindClient = () => {
       )}`;
 
       const findClientByLastName = await fetch(
-        "https://asociation-copy-api.vercel.app/api/clients/lastName",
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({ lastName: capitalizeLastName }),
-        }
+        `https://asociation-copy-api.vercel.app/api/clients/lastName/${apellido}`
       );
 
       if (findClientByLastName.status === 200) {

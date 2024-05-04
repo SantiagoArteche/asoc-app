@@ -920,7 +920,7 @@ export const SpreadSheetPresentacional = ({
                       const deleteUser = await fetch(
                         "https://asociation-copy-api.vercel.app/api/clients/deleteClient",
                         {
-                          method: "POST",
+                          method: "DELETE",
                           headers: { "Content-Type": "application/json" },
                           body: JSON.stringify({ id: clients._id }),
                         }
