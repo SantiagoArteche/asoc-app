@@ -101,121 +101,136 @@ export const FindClient = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ minHeight: "100vh", bgcolor: "#08282b", py: 4, px: 2 }}>
-        <Box sx={{ display: "flex", justifyContent: "space-between", mb: 4 }}>
-          <Link to="/spreadsheet" style={{ textDecoration: "none" }}>
-            <Typography variant="h5" color="white">
-              {"< Planillas"}
+      <Box
+        sx={{
+          minHeight: "100vh",
+          bgcolor: "#08282b",
+          py: 4,
+          px: 2,
+        }}
+      >
+        <Box sx={{ maxWidth: "90vw", mx: "auto" }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              mb: 4,
+            }}
+          >
+            <Link to="/spreadsheet" style={{ textDecoration: "none" }}>
+              <Typography variant="h5" color="white">
+                {"< Planillas"}
+              </Typography>
+            </Link>
+          </Box>
+
+          <Box sx={{ textAlign: "center", mb: 4 }}>
+            <Typography variant="h4" color="white" gutterBottom>
+              Buscar Cliente
             </Typography>
-          </Link>
-        </Box>
+            <Typography variant="body1" color="white" gutterBottom>
+              Ingresa DNI o Apellido para buscar un cliente.
+            </Typography>
+          </Box>
 
-        <Box sx={{ textAlign: "center", mb: 4 }}>
-          <Typography variant="h4" color="white" gutterBottom>
-            Buscar Cliente
-          </Typography>
-          <Typography variant="body1" color="white" gutterBottom>
-            Ingresa DNI o Apellido para buscar un cliente.
-          </Typography>
-        </Box>
-
-        <Box
-          component="form"
-          onSubmit={formikDni.handleSubmit}
-          sx={{ display: "flex", justifyContent: "center", mb: 4 }}
-        >
-          <TextField
-            name="dni"
-            label="Buscar por DNI"
-            variant="filled"
-            value={formikDni.values.dni}
-            onChange={formikDni.handleChange}
-            error={!!formikDni.errors.dni}
-            helperText={formikDni.errors.dni}
-            sx={commonTextFieldStyles}
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            sx={{
-              ml: 2,
-              backgroundColor: "#1a8587",
-              ":hover": { bgcolor: "#0d5a5b" },
-            }}
+          <Box
+            component="form"
+            onSubmit={formikDni.handleSubmit}
+            sx={{ display: "flex", justifyContent: "center", mb: 4 }}
           >
-            Buscar
-          </Button>
-        </Box>
-        <Box
-          component="form"
-          onSubmit={formikLastName.handleSubmit}
-          sx={{ display: "flex", justifyContent: "center", mb: 4 }}
-        >
-          <TextField
-            name="apellido"
-            label="Buscar por Apellido"
-            variant="filled"
-            value={formikLastName.values.apellido}
-            onChange={formikLastName.handleChange}
-            error={!!formikLastName.errors.apellido}
-            helperText={formikLastName.errors.apellido}
-            sx={commonTextFieldStyles}
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            sx={{
-              ml: 2,
-              backgroundColor: "#1a8587",
-              ":hover": { bgcolor: "#0d5a5b" },
-            }}
+            <TextField
+              name="dni"
+              label="Buscar por DNI"
+              variant="filled"
+              value={formikDni.values.dni}
+              onChange={formikDni.handleChange}
+              error={!!formikDni.errors.dni}
+              helperText={formikDni.errors.dni}
+              sx={commonTextFieldStyles}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                ml: 2,
+                backgroundColor: "#1a8587",
+                ":hover": { bgcolor: "#0d5a5b" },
+              }}
+            >
+              Buscar
+            </Button>
+          </Box>
+          <Box
+            component="form"
+            onSubmit={formikLastName.handleSubmit}
+            sx={{ display: "flex", justifyContent: "center", mb: 4 }}
           >
-            Buscar
-          </Button>
-        </Box>
+            <TextField
+              name="apellido"
+              label="Buscar por Apellido"
+              variant="filled"
+              value={formikLastName.values.apellido}
+              onChange={formikLastName.handleChange}
+              error={!!formikLastName.errors.apellido}
+              helperText={formikLastName.errors.apellido}
+              sx={commonTextFieldStyles}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                ml: 2,
+                backgroundColor: "#1a8587",
+                ":hover": { bgcolor: "#0d5a5b" },
+              }}
+            >
+              Buscar
+            </Button>
+          </Box>
 
-        {spreadsheet.length > 0 && (
-          <>
-            <ClientTable spreadsheet={spreadsheet} />
-            <Box sx={{ textAlign: "center", mt: 4 }}>
-              <Button
-                variant="contained"
-                onClick={() => setDialogOpen(true)}
-                sx={{
-                  backgroundColor: "red",
-                  color: "white",
-                  ":hover": { bgcolor: "#b22222" },
-                }}
-              >
-                Limpiar Resultados
-              </Button>
+          {spreadsheet.length > 0 && (
+            <Box>
+              <ClientTable spreadsheet={spreadsheet} />
+              <Box sx={{ textAlign: "center", mt: 4 }}>
+                <Button
+                  variant="contained"
+                  onClick={() => setDialogOpen(true)}
+                  sx={{
+                    backgroundColor: "red",
+                    color: "white",
+                    ":hover": { bgcolor: "#b22222" },
+                  }}
+                >
+                  Limpiar Resultados
+                </Button>
+              </Box>
             </Box>
-          </>
-        )}
+          )}
 
-        <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)}>
-          <DialogTitle>Confirmar Acción</DialogTitle>
-          <DialogContent>
-            <Typography>
-              ¿Estás seguro de que quieres limpiar los resultados?
-            </Typography>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              onClick={() => setDialogOpen(false)}
-              sx={{ color: "black", background: "white" }}
-            >
-              Cancelar
-            </Button>
-            <Button
-              onClick={handleClearResults}
-              color="error"
-              sx={{ background: "red", color: "white" }}
-            >
-              Limpiar
-            </Button>
-          </DialogActions>
-        </Dialog>
+          <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)}>
+            <DialogTitle>Confirmar Acción</DialogTitle>
+            <DialogContent>
+              <Typography>
+                ¿Estás seguro de que quieres limpiar los resultados?
+              </Typography>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                onClick={() => setDialogOpen(false)}
+                sx={{ color: "black", background: "white" }}
+              >
+                Cancelar
+              </Button>
+              <Button
+                onClick={handleClearResults}
+                color="error"
+                sx={{ background: "red", color: "white" }}
+              >
+                Limpiar
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </Box>
       </Box>
     </ThemeProvider>
   );
