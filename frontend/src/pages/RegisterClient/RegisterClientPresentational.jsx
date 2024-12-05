@@ -14,13 +14,22 @@ import { Link } from "react-router-dom";
 const inputStyle = {
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      borderColor: "text.secondary",
+      borderColor: "text.primary",
+    },
+    "&:hover fieldset": {
+      borderColor: "text.primary",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "secondary.main",
+      borderColor: "text.primary",
     },
   },
   "& .MuiInputLabel-root": {
+    color: "text.secondary",
+    "&.Mui-focused": {
+      color: "text.primary",
+    },
+  },
+  "& .MuiInputBase-input": {
     color: "text.secondary",
   },
 };
@@ -50,6 +59,7 @@ export const RegisterClientPresentational = ({ formik }) => {
                   Información Personal
                 </Typography>
                 <TextField
+                  autoComplete="off"
                   fullWidth
                   id="dni"
                   name="dni"
@@ -63,6 +73,7 @@ export const RegisterClientPresentational = ({ formik }) => {
                   sx={inputStyle}
                 />
                 <TextField
+                  autoComplete="off"
                   fullWidth
                   id="nombre"
                   name="nombre"
@@ -76,6 +87,7 @@ export const RegisterClientPresentational = ({ formik }) => {
                   sx={inputStyle}
                 />
                 <TextField
+                  autoComplete="off"
                   fullWidth
                   id="apellido"
                   name="apellido"
@@ -91,6 +103,7 @@ export const RegisterClientPresentational = ({ formik }) => {
                   sx={inputStyle}
                 />
                 <TextField
+                  autoComplete="off"
                   fullWidth
                   id="grupoFamiliar"
                   name="grupoFamiliar"
@@ -109,6 +122,7 @@ export const RegisterClientPresentational = ({ formik }) => {
                   sx={inputStyle}
                 />
                 <TextField
+                  autoComplete="off"
                   fullWidth
                   id="direccion"
                   name="direccion"
@@ -126,6 +140,7 @@ export const RegisterClientPresentational = ({ formik }) => {
                   sx={inputStyle}
                 />
                 <TextField
+                  autoComplete="off"
                   fullWidth
                   id="telefono"
                   name="telefono"
@@ -146,6 +161,7 @@ export const RegisterClientPresentational = ({ formik }) => {
                   Retira
                 </Typography>
                 <TextField
+                  autoComplete="off"
                   fullWidth
                   id="mercaderias"
                   name="mercaderias"
@@ -157,6 +173,7 @@ export const RegisterClientPresentational = ({ formik }) => {
                   sx={inputStyle}
                 />
                 <TextField
+                  autoComplete="off"
                   fullWidth
                   id="prendas"
                   name="prendas"
@@ -168,6 +185,7 @@ export const RegisterClientPresentational = ({ formik }) => {
                   sx={inputStyle}
                 />
                 <TextField
+                  autoComplete="off"
                   fullWidth
                   id="zapatillas"
                   name="zapatillas"
@@ -179,6 +197,7 @@ export const RegisterClientPresentational = ({ formik }) => {
                   sx={inputStyle}
                 />
                 <TextField
+                  autoComplete="off"
                   fullWidth
                   id="microCredito"
                   name="microCredito"
@@ -190,6 +209,7 @@ export const RegisterClientPresentational = ({ formik }) => {
                   sx={inputStyle}
                 />
                 <TextField
+                  autoComplete="off"
                   fullWidth
                   id="numeroCuota"
                   name="numeroCuota"

@@ -3,19 +3,13 @@ import {
   Box,
   Button,
   Typography,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogActions,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import { ClientTable } from "../../components/ClientTable";
 
 export const SpreadSheetPresentational = ({
   spreadsheet,
@@ -115,56 +109,10 @@ export const SpreadSheetPresentational = ({
             la fecha del día actual)
           </Typography>
         ) : (
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="client table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>DNI</TableCell>
-                  <TableCell>Nombre</TableCell>
-                  <TableCell>Apellido</TableCell>
-                  <TableCell>Grupo Familiar</TableCell>
-                  <TableCell>Dirección</TableCell>
-                  <TableCell>Teléfono</TableCell>
-                  <TableCell>Mercaderías</TableCell>
-                  <TableCell>Prendas</TableCell>
-                  <TableCell>Zapatillas</TableCell>
-                  <TableCell>Microcrédito</TableCell>
-                  <TableCell>N° Cuota</TableCell>
-                  <TableCell>Comentarios</TableCell>
-                  <TableCell>Fecha</TableCell>
-                  <TableCell>Acciones</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {spreadsheet.map((client) => (
-                  <TableRow key={client._id}>
-                    <TableCell>{client.dni}</TableCell>
-                    <TableCell>{client.nombre}</TableCell>
-                    <TableCell>{client.apellido}</TableCell>
-                    <TableCell>{client.grupoFamiliar}</TableCell>
-                    <TableCell>{client.direccion || "-"}</TableCell>
-                    <TableCell>{client.telefono || "-"}</TableCell>
-                    <TableCell>{client.mercaderias || "-"}</TableCell>
-                    <TableCell>{client.prendas || "-"}</TableCell>
-                    <TableCell>{client.zapatillas || "-"}</TableCell>
-                    <TableCell>{client.microCredito || "-"}</TableCell>
-                    <TableCell>{client.numeroCuota || "-"}</TableCell>
-                    <TableCell>{client.otros || "-"}</TableCell>
-                    <TableCell>{`${client.fecha[8]}${client.fecha[9]}/${client.fecha[5]}${client.fecha[6]}`}</TableCell>
-                    <TableCell>
-                      <Button
-                        variant="contained"
-                        color="error"
-                        onClick={() => handleDeleteClick(client._id)}
-                      >
-                        Borrar
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+          <ClientTable
+            spreadsheet={spreadsheet}
+            handleDeleteClick={handleDeleteClick}
+          />
         )}
 
         <Dialog

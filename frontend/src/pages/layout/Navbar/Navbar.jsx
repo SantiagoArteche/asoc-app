@@ -3,7 +3,9 @@ import { Box, Typography } from "@mui/material";
 export const Navbar = () => {
   return (
     <Typography
-      variant="h3"
+      sx={{
+        fontSize: 36,
+      }}
       component="h1"
       gutterBottom
       align="center"
