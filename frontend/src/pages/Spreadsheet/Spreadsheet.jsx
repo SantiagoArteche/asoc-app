@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SpreadsheetPresentational } from "./SpreadsheetPresentational";
+import { SpreadSheetPresentational } from "./SpreadSheetPresentational";
 import { createTheme, ThemeProvider } from "@mui/material";
 
 const theme = createTheme({
@@ -80,7 +80,7 @@ export const Spreadsheet = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <SpreadsheetPresentational
+      <SpreadSheetPresentational
         spreadsheet={spreadsheet}
         date={date}
         year={year}

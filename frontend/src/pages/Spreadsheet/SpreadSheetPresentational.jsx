@@ -32,7 +32,7 @@ const months = [
   { name: "Diciembre", date: "1224" },
 ];
 
-export const SpreadsheetPresentational = ({
+export const SpreadSheetPresentational = ({
   spreadsheet,
   date,
   year,
