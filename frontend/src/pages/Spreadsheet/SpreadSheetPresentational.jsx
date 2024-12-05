@@ -17,21 +17,6 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const months = [
-  { name: "Enero", date: "0124" },
-  { name: "Febrero", date: "0224" },
-  { name: "Marzo", date: "0324" },
-  { name: "Abril", date: "0424" },
-  { name: "Mayo", date: "0524" },
-  { name: "Junio", date: "0624" },
-  { name: "Julio", date: "0724" },
-  { name: "Agosto", date: "0824" },
-  { name: "Septiembre", date: "0924" },
-  { name: "Octubre", date: "1024" },
-  { name: "Noviembre", date: "1124" },
-  { name: "Diciembre", date: "1224" },
-];
-
 export const SpreadSheetPresentational = ({
   spreadsheet,
   date,
@@ -40,6 +25,22 @@ export const SpreadSheetPresentational = ({
   onYearChange,
   onDeleteClient,
 }) => {
+  const yearS = year.slice(2);
+  const months = [
+    { name: "Enero", date: "01" + yearS },
+    { name: "Febrero", date: "02" + yearS },
+    { name: "Marzo", date: "03" + yearS },
+    { name: "Abril", date: "04" + yearS },
+    { name: "Mayo", date: "05" + yearS },
+    { name: "Junio", date: "06" + yearS },
+    { name: "Julio", date: "07" + yearS },
+    { name: "Agosto", date: "08" + yearS },
+    { name: "Septiembre", date: "09" + yearS },
+    { name: "Octubre", date: "10" + yearS },
+    { name: "Noviembre", date: "11" + yearS },
+    { name: "Diciembre", date: "12" + yearS },
+  ];
+
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [clientToDelete, setClientToDelete] = useState(null);
 

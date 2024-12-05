@@ -35,9 +35,10 @@ export const Spreadsheet = () => {
         const data = await response.json();
 
         const clients = data.message;
-        const filtered = clients.filter((client) => {
-          const clientDate = `${client.fecha[5]}${client.fecha[6]}${client.fecha[2]}${client.fecha[3]}`;
-          return clientDate === date;
+        const filtered = clients.filter((el) => {
+          return (
+            `${el.fecha[5]}${el.fecha[6]}${el.fecha[2]}${el.fecha[3]}` == date
+          );
         });
 
         setSpreadsheet(filtered);
@@ -55,8 +56,8 @@ export const Spreadsheet = () => {
   };
 
   const handleYearChange = () => {
-    setYear((prev) => (prev === "2023" ? "2024" : "2023"));
-    setDate((prev) => (prev === "1223" ? "0124" : "1223"));
+    setYear((prev) => (prev == "2023" ? "2024" : "2023"));
+    setDate((prev) => (prev == "1223" ? "0124" : "1223"));
   };
 
   const handleDeleteClient = async (id) => {
