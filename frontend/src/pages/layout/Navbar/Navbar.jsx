@@ -1,18 +1,18 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 export const Navbar = () => {
   return (
-    <Box
-      sx={{
-        textAlign: "center",
-        backgroundColor: "#185457",
-        fontSize: { xs: "36px", md: "40px" },
-        color: "white",
-        fontWeight: "bold",
-        padding: 2,
-      }}
+    <Typography
+      variant="h3"
+      component="h1"
+      gutterBottom
+      align="center"
+      color="white"
+      bgcolor="#185457"
+      m={0}
+      py={1}
     >
       Asociación
-    </Box>
+    </Typography>
   );
 };

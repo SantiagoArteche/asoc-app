@@ -1,31 +1,46 @@
-import {
-  TextField,
-  Input,
-  Button,
-  Box,
-  Grid,
-  FormControl,
-} from "@mui/material";
-import { createTheme } from "@mui/material/styles";
+import React from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { RegisterClientPresentacional } from "./RegisterClientPresentacional.jsx";
-import { Link } from "react-router-dom";
+import { RegisterClientPresentational } from "./RegisterClientPresentational";
 import Swal from "sweetalert2";
 
-export const RegisterClient = () => {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#1a8587",
-      },
-      lighter: "#1a8587",
-      semiDark: "#08282b",
-      dark: "#08282b",
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#185457",
     },
-  });
+    secondary: {
+      main: "#a2ede6",
+    },
+    background: {
+      default: "#08282b",
+      paper: "#185457",
+    },
+    text: {
+      primary: "#ffffff",
+      secondary: "#a2ede6",
+    },
+  },
+});
 
-  const { handleSubmit, handleChange, errors, values, resetForm } = useFormik({
+const validationSchema = Yup.object({
+  nombre: Yup.string().required("Nombre requerido"),
+  dni: Yup.string().required("DNI requerido"),
+  apellido: Yup.string().required("Apellido requerido"),
+  grupoFamiliar: Yup.string().required("Grupo Familiar requerido"),
+  direccion: Yup.string().required("Dirección requerida"),
+  telefono: Yup.string().required("Teléfono requerido"),
+  mercaderias: Yup.string(),
+  prendas: Yup.string(),
+  zapatillas: Yup.string(),
+  microCredito: Yup.string(),
+  numeroCuota: Yup.string().required("Número de cuota requerido"),
+  otros: Yup.string(),
+});
+
+export const RegisterClient = () => {
+  const formik = useFormik({
     initialValues: {
       nombre: "",
       dni: "",
@@ -40,57 +55,42 @@ export const RegisterClient = () => {
       numeroCuota: "",
       otros: "",
     },
-    onSubmit: async (datos) => {
-      const { apellido: lastName, ...rest } = datos;
-      const apellidoUpperCase = `${lastName[0].toUpperCase()}${lastName
-        .slice(1, lastName.length)
-        .toLowerCase()}`;
+    validationSchema,
+    onSubmit: async (values) => {
+      const { apellido, ...rest } = values;
+      const apellidoUpperCase =
+        apellido.charAt(0).toUpperCase() + apellido.slice(1).toLowerCase();
 
-      const createUser = await fetch(
-        "https://asociation-copy-api.vercel.app/api/clients",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...rest, apellido: apellidoUpperCase }),
+      try {
+        const response = await fetch(
+          "https://asociation-copy-api.vercel.app/api/clients",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ...rest, apellido: apellidoUpperCase }),
+          }
+        );
+
+        if (response.ok) {
+          await response.json();
+          Swal.fire(
+            "Completado!",
+            "Cliente registrado correctamente",
+            "success"
+          );
+          formik.resetForm();
+        } else {
+          throw new Error("Failed to register client");
         }
-      );
-
-      if (createUser.status == 200) {
-        await createUser.json();
-        Swal.fire("Completado!", "Cliente registrado correctamente", "success");
-        resetForm();
+      } catch (error) {
+        Swal.fire("Error!", "No se pudo registrar el cliente", "error");
       }
     },
-    validateOnChange: false,
-    validationSchema: Yup.object({
-      nombre: Yup.string().required("Nombre requerido"),
-      dni: Yup.string().required("Dni requerido"),
-      apellido: Yup.string().required("Apellido requerido"),
-      grupoFamiliar: Yup.string().required("Grupo Familiar requerido"),
-      direccion: Yup.string().required("Dirección requerida"),
-      telefono: Yup.string().required("Teléfono requerido"),
-      mercaderias: Yup.string().optional(),
-      prendas: Yup.string().optional(),
-      zapatillas: Yup.string().optional(),
-      microCredito: Yup.string().optional(),
-      numeroCuota: Yup.string().required("Número de cuota requerido"),
-    }),
   });
 
   return (
-    <RegisterClientPresentacional
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-      TextField={TextField}
-      Input={Input}
-      Button={Button}
-      theme={theme}
-      errors={errors}
-      Grid={Grid}
-      Box={Box}
-      Link={Link}
-      resetForm={resetForm}
-      values={values}
-    />
+    <ThemeProvider theme={theme}>
+      <RegisterClientPresentational formik={formik} />
+    </ThemeProvider>
   );
 };
