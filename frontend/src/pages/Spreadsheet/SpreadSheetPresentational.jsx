@@ -19,20 +19,19 @@ export const SpreadSheetPresentational = ({
   onYearChange,
   onDeleteClient,
 }) => {
-  const yearS = year.slice(2);
   const months = [
-    { name: "Enero", date: "01" + yearS },
-    { name: "Febrero", date: "02" + yearS },
-    { name: "Marzo", date: "03" + yearS },
-    { name: "Abril", date: "04" + yearS },
-    { name: "Mayo", date: "05" + yearS },
-    { name: "Junio", date: "06" + yearS },
-    { name: "Julio", date: "07" + yearS },
-    { name: "Agosto", date: "08" + yearS },
-    { name: "Septiembre", date: "09" + yearS },
-    { name: "Octubre", date: "10" + yearS },
-    { name: "Noviembre", date: "11" + yearS },
-    { name: "Diciembre", date: "12" + yearS },
+    { name: "Enero", date: "1/" + year },
+    { name: "Febrero", date: "2/" + year },
+    { name: "Marzo", date: "3/" + year },
+    { name: "Abril", date: "4/" + year },
+    { name: "Mayo", date: "5/" + year },
+    { name: "Junio", date: "6/" + year },
+    { name: "Julio", date: "7/" + year },
+    { name: "Agosto", date: "8/" + year },
+    { name: "Septiembre", date: "9/" + year },
+    { name: "Octubre", date: "10/" + year },
+    { name: "Noviembre", date: "11/" + year },
+    { name: "Diciembre", date: "12" + year },
   ];
 
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);

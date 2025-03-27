@@ -22,8 +22,8 @@ const theme = createTheme({
 });
 
 export const Spreadsheet = () => {
-  const [date, setDate] = useState("1223");
-  const [year, setYear] = useState("2023");
+  const [date, setDate] = useState("1/2024");
+  const [year, setYear] = useState("2024");
   const [spreadsheet, setSpreadsheet] = useState([]);
 
   useEffect(() => {
@@ -35,10 +35,12 @@ export const Spreadsheet = () => {
         const data = await response.json();
 
         const clients = data.message;
-        const filtered = clients.filter((el) => {
-          return (
-            `${el.fecha[5]}${el.fecha[6]}${el.fecha[2]}${el.fecha[3]}` == date
-          );
+        const filtered = clients.filter((client) => {
+          const clientDate = new Date(client.fecha).toLocaleString();
+          const [formattedDate] = clientDate.split(",");
+          const [_, month, year] = formattedDate.split("/");
+          const finalDate = `${month}/${year}`;
+          return finalDate == date;
         });
 
         setSpreadsheet(filtered);
@@ -56,8 +58,8 @@ export const Spreadsheet = () => {
   };
 
   const handleYearChange = () => {
-    setYear((prev) => (prev == "2023" ? "2024" : "2023"));
-    setDate((prev) => (prev == "1223" ? "0124" : "1223"));
+    setYear((prev) => (prev == "2024" ? "2025" : "2024"));
+    setDate((prev) => (prev.endsWith("2024") ? "1/2025" : "1/2024"));
   };
 
   const handleDeleteClient = async (id) => {
