@@ -31,7 +31,7 @@ export const SpreadSheetPresentational = ({
     { name: "Septiembre", date: "9/" + year },
     { name: "Octubre", date: "10/" + year },
     { name: "Noviembre", date: "11/" + year },
-    { name: "Diciembre", date: "12" + year },
+    { name: "Diciembre", date: "12/" + year },
   ];
 
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
